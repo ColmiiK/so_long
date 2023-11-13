@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:27:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/10 14:30:04 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:05 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static unsigned int	validate_type(char c, va_list args)
 {

@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 21:23:52 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/10/19 16:25:22 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:21:14 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	print_char(char c)
 {

@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:40:47 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/10/17 13:03:50 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:43 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 size_t	ft_strlen(const char *str)
 {

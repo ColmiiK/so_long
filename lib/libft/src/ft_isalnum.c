@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:09:03 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/09/11 15:37:22 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:18:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_isalnum(int c)
 {

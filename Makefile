@@ -38,7 +38,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@make -C $(LIBFT)
-			@$(CC) $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
+			@$(CC) $(CFLAGS) -lm $(LIBS) $(OBJ) -o $(NAME)
 			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)

@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 21:26:00 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/10/19 16:27:41 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:21:19 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static int	digit_count(int n)
 {

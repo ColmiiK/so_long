@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:40:51 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/09/25 12:07:58 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:12 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static int	check_base(char *base)
 {

@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:18:14 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/09/19 11:18:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:36 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

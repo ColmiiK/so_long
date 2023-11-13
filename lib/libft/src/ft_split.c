@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 13:11:01 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/09/19 16:59:53 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:21 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static int	word_count(const char *s, char c)
 {

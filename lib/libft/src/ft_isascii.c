@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:33:38 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/09/11 15:35:31 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:18:59 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_isascii(int c)
 {
