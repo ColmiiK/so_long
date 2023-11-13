@@ -6,15 +6,17 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:59 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/13 13:48:52 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:58:08 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int main(void)
+int	main(void)
 {
-	mlx_t* mlx = NULL;
+	mlx_t	*mlx;
+
+	mlx = NULL;
 	mlx_init(100, 100, "Hello", 1);
 	mlx_loop(mlx);
 }
