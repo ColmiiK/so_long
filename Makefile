@@ -1,69 +1,39 @@
-# Variables
+NAME	:= so_long
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLX	:= ./lib/MLX42
+LIBFT	:= ./lib/libft
+SRC_DIR := src/
+OBJ_DIR := obj/
 
-NAME	= so_long.a
-INCLUDE = include
-LIBFT = libft
-SRC_DIR = src/
-OBJ_DIR = obj/
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I
-RM = rm -f
-AR = ar rcs
+HEADERS	:= -I ./include -I $(LIBMLX) -I $(LIBFT)/include
+LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/alvega-g/.brew/opt/glfw/lib/" -pthread -lm
+SRC_FILES	:= test
 
-# Colors
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
+all: libmlx $(NAME)
 
-#Sources
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-SRC_FILES = 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-###
-
-OBJF = .cache_exists
-
-all:	$(NAME)
-
-$(NAME):	$(OBJ)
-			@make -C $(LIBFT)
-			@cp libft/libft.a .
-			@mv libft.a $(NAME)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
-			@make clean -C $(LIBFT)
-			@echo "$(BLUE)so_long object files cleaned!$(DEF_COLOR)"
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(LIBMLX)/build
+	@rm -rf $(LIBFT)/build
 
-fclean:	clean
-			@$(RM) -f $(NAME)
-			@$(RM) -f $(LIBFT)/libft.a
-			@echo "$(BLUE)so_long binary files cleaned!$(DEF_COLOR)"
-			@echo "$(CYAN)libft binary files cleaned!$(DEF_COLOR)"
+fclean: clean
+	@rm -rf $(NAME)
 
-re:		fclean all
-		@echo "$(CYAN)so_long recompiled!$(DEF_COLOR)"
+re: clean all
 
-norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
-
-.PHONY: all clean fclean re norm
+.PHONY: all, clean, fclean, re, libmlx
