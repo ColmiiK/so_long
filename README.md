@@ -1,6 +1,6 @@
 # so_long
 
-This project consists of creating a small 2D game using the `miniLibX` graphical library.
+This project consists of creating a small 2D game using the `MLX42` graphical library.
 
 ### Mechanics
 
