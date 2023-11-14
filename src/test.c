@@ -6,50 +6,57 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:59 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/14 13:16:29 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:48:25 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+static mlx_image_t* player;
+static mlx_image_t* background;
 
-static void ft_error(void)
+void ft_hook(void* param)
 {
-	ft_printf("%s", mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
+	mlx_t* mlx = param;
+
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_W))
+		player->instances[0].y -= 10;
+	if (mlx_is_key_down(mlx, MLX_KEY_S))
+		player->instances[0].y += 10;
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
+		player->instances[0].x -= 10;
+	if (mlx_is_key_down(mlx, MLX_KEY_D))
+		player->instances[0].x += 10;
+	ft_printf("%f", mlx->delta_time);
 }
 
-static void ft_hook(void* param)
+int32_t main(void)
 {
-	const mlx_t *mlx = param;
-	ft_printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
-}
+	mlx_t* mlx;
 
-int	main(void)
-{
-	// Starts mlx
-	mlx_t* mlx = mlx_init(W_WIDTH, W_HEIGHT, "Test", true);
-	if (!mlx)
-		ft_error();
-	
-	// Loads the texture
-	mlx_texture_t* texture = mlx_load_png("./textures/space.png");
-	if (!texture)
-		ft_error();
-	
-	// Converts the texture to a displayable image
-	mlx_image_t* img = mlx_texture_to_image(mlx, texture);
-	if (!img)
-		ft_error();
-	
-	// Display the image
-	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
-		ft_error();
+	if (!(mlx = mlx_init(W_WIDTH, W_HEIGHT, "sus", true)))
+	{
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	// Background texture
+	mlx_texture_t* background_texture = mlx_load_png("./textures/space.png");
+	background = mlx_texture_to_image(mlx, background_texture);
+	mlx_image_to_window(mlx, background, 0, 0);
 
+	// Player textures
+	mlx_texture_t* player_texture = mlx_load_png("./textures/sus.png");
+	player = mlx_texture_to_image(mlx, player_texture);
+	mlx_image_to_window(mlx, player, 500, 500);
+	
+	// Hook to move the character
 	mlx_loop_hook(mlx, ft_hook, mlx);
+
+	// Keep the window open and functioning
 	mlx_loop(mlx);
-	
-	mlx_delete_image(mlx, img);
-	mlx_delete_texture(texture);
+
+	// Terminate execution
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }
