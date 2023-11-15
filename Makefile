@@ -1,9 +1,10 @@
 #Variables
 
 NAME = so_long
+USER = alvega-g
 INCLUDE = include
 LIBFT = lib/libft
-LIBS = lib/MLX42/libmlx42.a lib/libft/libft.a -ldl -lglfw -L"/Users/alvega-g/.brew/opt/glfw/lib" -pthread -lm
+MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
 CC = gcc
@@ -38,7 +39,8 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@make -C $(LIBFT)
-			@$(CC) $(CFLAGS) -lm $(LIBS) $(OBJ) -o $(NAME)
+			@make -C $(MLX42)
+			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
@@ -51,11 +53,14 @@ $(OBJF):
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@make clean -C $(LIBFT)
+			@make clean -C $(MLX42)
+			@echo "$(CYAN)libft object files cleaned!$(DEF_COLOR)"
 			@echo "$(BLUE)so_long object files cleaned!$(DEF_COLOR)"
 
-fclean:		clean
+fclean:		
 			@$(RM) -f $(NAME)
-			@$(RM) -f $(LIBFT)/libft.a
+			@make fclean -C $(LIBFT)
+			@make fclean -C $(MLX42)
 			@echo "$(CYAN)libft executable cleaned!$(DEF_COLOR)"
 			@echo "$(BLUE)so_long executable cleaned!$(DEF_COLOR)"
 

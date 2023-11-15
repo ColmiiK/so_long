@@ -46,11 +46,9 @@ $(shell if [ ! -d "$(OBJDIR)" ]; then mkdir -p $(OBJDIR); fi)
 
 clean:
 	@rm -rf $(OBJDIR)
-	@echo "$(RED)Object files removed!$(DEF_COLOR)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)Libft removed!$(DEF_COLOR)"
 
 re: fclean all
 

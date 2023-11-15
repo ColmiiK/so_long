@@ -6,13 +6,20 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:59 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/14 16:48:25 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:51:01 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+CHARACTER SPRITES -> https://twitter.com/unseven/status/1534943454920417283
+DEATH SPRITE -> https://twitter.com/poncle_vampire/status/1545784877349588992
+
+*/
 #include "../include/so_long.h"
 static mlx_image_t* player;
 static mlx_image_t* background;
+
+
 
 void ft_hook(void* param)
 {
@@ -21,6 +28,7 @@ void ft_hook(void* param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
+		
 		player->instances[0].y -= 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 		player->instances[0].y += 10;
