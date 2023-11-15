@@ -26,7 +26,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES = 
+SRC_FILES = main
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -58,6 +58,7 @@ clean:
 			@echo "$(BLUE)so_long object files cleaned!$(DEF_COLOR)"
 
 fclean:		
+			@$(RM) -rf $(OBJ_DIR)
 			@$(RM) -f $(NAME)
 			@make fclean -C $(LIBFT)
 			@make fclean -C $(MLX42)
