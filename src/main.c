@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/15 13:34:51 by alvega-g         ###   ########.fr       */
+/*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
+/*   Updated: 2023/11/15 13:51:22 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../include/so_long.h"
 
-# define W_WIDTH 1200
-# define W_HEIGHT 1200
+char **check_map(char *file)
+{
+	char **map;
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	
+	get_next_line()
+}
 
 
-
-# include "../lib/MLX42/include/MLX42/MLX42.h"
-# include "../lib/libft/include/libft.h"
-# include <math.h>
-
-
-
-#endif
+int main(int ac, char **av)
+{
+	char **map;
+	
+	map = check_map(av[1]);
+	if (map)
+		init_game(map);
+	else
+		return (0);
+}
