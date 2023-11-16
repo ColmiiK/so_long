@@ -71,4 +71,7 @@ re:			fclean all
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)/src
 
-.PHONY: all clean fclean re norm
+map:
+			@./so_long maps/map_0.ber
+
+.PHONY: all clean fclean re norm map
