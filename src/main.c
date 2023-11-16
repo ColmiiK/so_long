@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/16 14:00:52 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:46:46 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,36 +67,70 @@ void populate_map(data_t *game, char *av)
 	Is there a valid map from P to E collecting all C
 */
 
-int map_check(char **map, int len)
+int is_width_consistent(char **map, size_t len)
 {
 	int i;
-	
-	int player_flag;
-	int exit_flag;
 	
 	i = 0;
 	while (map[i])
 	{
-		if (ft_strlen(map[i]) != len) // Inconsistent width
-			return (0);
-		if (!ft_strchr(map[i], "P")) // No initial position
-			return (0);
-		if (ft_strchr(map[i], "P") && player_flag == 1) // More than one starting position
-			return (0);
-		if (!ft_strchr(map[i], "C")) // No collectable
-			return (0);
-		if (!ft_strchr(map[i], "E" && exit_flag == 1)) // No exit
+		if (ft_strlen(map[i]) != len)
 			return (0);
 		i++;
 	}
 	return (1);
 }
+
+/*TODO: CHECK FOR P, C, and E*/
+int is_map_playable(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (!ft_strchr(map[i], 'P')) // No initial position
+			return (0);
+		if (ft_strchr(map[i], 'P') && player_flag == 1) // More than one starting position
+			return (0);
+		if (!ft_strchr(map[i], 'C')) // No collectable
+			return (0);
+		if (!ft_strchr(map[i], 'E' && exit_flag == 1)) // No exit
+			return (0);
+		i++;
+	}
+	return (1);
+}
+/* TODO: CHECK FOR 1 ALL AROUND MAP */
+int is_map_walled(char **map, size_t width, size_t height)
+{
+	int i;
+
+	i = 0;
+	if (ft_strncmp(map[0], "1", width)) // Checks for walls on the first row
+		return (0);
+	if (ft_stncmp(map[height], "1", width)) // Checks for walls on the last row
+		return (0);
+	while (map[i])
+	{
+		if (map[i][0] != 1)
+			return (0);
+		if (map[i][width] != 1)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int is_map_correct(data_t game)
 {
-	if (!map_check(game->map, game->map_width));
+	if (!is_width_consistent(game.map, (size_t)game.map_width))
 		return (0);
-	
-	
+	if (!is_map_playable(game.map))
+		return (0);
+	if (!is_map_walled(game.map, (size_t)game.map_width, (size_t)game.map_height))
+		return (0);
+	return (1);
 } 
 
 int main(int ac, char **av)
@@ -107,7 +141,7 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		populate_map(&game, av[1]);
-		if (!is_map_correct(&game))
+		if (!is_map_correct(game))
 			return (0);
 	}
 }
