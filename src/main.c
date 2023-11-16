@@ -6,11 +6,43 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/16 18:46:46 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:52:19 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+/*	
+	TODO:
+	Function that returns error appropiate error message
+	
+	Window creation
+	Window adjustment
+
+	Background tiling
+	Wall tiling
+	
+	Player image
+	Player input (WASD, Escape)
+	Player movement
+	Hook for moves
+	Moves on screen
+	Player collision
+	Player sprite movement
+	
+	Exit
+	Coin image
+	Coin counter
+	Coin check for exit
+	
+	Enemy image
+	Enemy movement
+	Enemy player tracking?
+	Gameover on enemy touch
+	
+	Correct termination of program
+	Leak testing
+*/
 
 static int add_to_map(data_t *game, char *line)
 {	
