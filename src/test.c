@@ -6,15 +6,10 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:59 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/15 11:51:01 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:09:28 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-CHARACTER SPRITES -> https://twitter.com/unseven/status/1534943454920417283
-DEATH SPRITE -> https://twitter.com/poncle_vampire/status/1545784877349588992
-
-*/
 #include "../include/so_long.h"
 static mlx_image_t* player;
 static mlx_image_t* background;

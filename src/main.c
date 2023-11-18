@@ -6,11 +6,17 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/16 18:52:19 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:09:43 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+/*
+	CHARACTER SPRITES -> https://twitter.com/unseven/status/1534943454920417283
+	DEATH SPRITE -> https://twitter.com/poncle_vampire/status/1545784877349588992
+
+*/
 
 /*	
 	TODO:
@@ -67,16 +73,6 @@ static int add_to_map(data_t *game, char *line)
 	return (1);
 }
 
-static int map_width(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line[i])
-		i++;
-	return (i);
-}
-
 void populate_map(data_t *game, char *av)
 {
 	char *temp_line;
@@ -90,7 +86,7 @@ void populate_map(data_t *game, char *av)
 			break ;
 	}
 	close(game->fd);
-	game->map_width = map_width(game->map[0]);
+	game->map_width = ft_strlen(game->map[0]);
 }
 
 /*
