@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/20 17:31:21 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:45:22 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct data_s
 }	data_t;
 
 void populate_map(data_t *game, char *av);
-int is_map_correct(data_t game);
+int is_map_correct(data_t *game);
 int error_message(char code);
 size_t get_width(char *str);
 

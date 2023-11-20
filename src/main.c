@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/20 18:11:08 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:44:12 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@
 
 int main(int ac, char **av)
 {
-	static data_t game;
-
+	data_t game;
+	
 	ft_memset(&game, 0, sizeof(data_t));
 	if (ac == 2)
 	{
 		populate_map(&game, av[1]);
-		if (!is_map_correct(game))
+		if (!is_map_correct(&game))
 			return (0);
 	}
 	for (int i = 0; i < game.map_height; i++){

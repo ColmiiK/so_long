@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/20 18:11:59 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:52:39 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void populate_map(data_t *game, char *av)
 	game->map_width = get_width(game->map[0]);
 }
 
-static int is_map_playable(data_t game)
+static int is_map_playable(data_t *game)
 {
 	int i;
 	int player_flag;
@@ -60,16 +60,16 @@ static int is_map_playable(data_t game)
 	i = 0;
 	player_flag = 0;
 	exit_flag = 0;
-	while (game.map[i])
+	while (game->map[i])
 	{
-		if (get_width(game.map[i]) != (size_t)game.map_width)
+		if (get_width(game->map[i]) != (size_t)game->map_width)
 			return (0);
-		if (ft_strchr(game.map[i], 'P'))
+		if (ft_strchr(game->map[i], 'P'))
 			player_flag++;
-		if (ft_strchr(game.map[i], 'E'))
+		if (ft_strchr(game->map[i], 'E'))
 			exit_flag++;
-		if (ft_strchr(game.map[i], 'C'))
-			game.collectables++;
+		if (ft_strchr(game->map[i], 'C'))
+			game->collectables++;
 		i++;
 	}
 	if (player_flag != 1)
@@ -79,32 +79,31 @@ static int is_map_playable(data_t game)
 	return (1);
 }
 /* TODO: CHECK FOR 1 ALL AROUND MAP */
-static int is_map_walled(char **map, size_t width, size_t height)
+static int is_map_walled(data_t *game)
 {
 	int i;
 
 	i = 0;
-	if (ft_strchr(map[0], '1') == 0) // <- FIX!!!!!!!
+	if (ft_strchr(game->map[0], '1') == 0)
 		return (0);
-	if (ft_strchr(map[height], '1') == 0) // Checks for walls on the last row
+	if (ft_strchr(game->map[game->map_height], '1') == 0) // SEG FAULT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		return (0);
-	while (map[i]) // Checks for walls on the first and last column
+	while (game->map[i]) // Checks for walls on the first and last column
 	{
-		if (map[i][0] != '1')
+		if (game->map[i][0] != '1')
 			return (0);
-		if (map[i][width - 1] != '1')
+		if (game->map[i][game->map_width] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int is_map_correct(data_t game)
+int is_map_correct(data_t *game)
 {
 	if (!is_map_playable(game))
 		return (error_message('M'));
-	game.map_height--;
-	if (!is_map_walled(game.map, game.map_width, game.map_height))
+	if (!is_map_walled(game))
 		return (error_message('M'));
 	return (1);
 } 
