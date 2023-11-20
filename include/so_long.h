@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/15 16:33:08 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:31:21 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,17 @@ typedef struct data_s
 	int map_width;
 	int map_height;
 	int collectables;
-	
 	char **map;
-	void *floor;
-	void *wall;
-	void *player;
-	void *exit;
 	void *collectable;
 	void *mlx_pointer;
 	void *window_pointer;
 	
 }	data_t;
+
+void populate_map(data_t *game, char *av);
+int is_map_correct(data_t game);
+int error_message(char code);
+size_t get_width(char *str);
+
 
 #endif
