@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/21 13:17:28 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:19:24 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 /*
 	CHARACTER SPRITES -> https://twitter.com/unseven/status/1534943454920417283
-	DEATH SPRITE
-		-> https://twitter.com/poncle_vampire/status/1545784877349588992
+	DEATH SPRITE -> https://twitter.com/poncle_vampire/status/1545784877349588992
 
 */
 
@@ -27,18 +26,19 @@
 	Map error checking
 	Map error message
 	Window creation
+	Escape closes the window
+	Window error messasage
+	
 	
 	TODO:
-	Window error messasage
 
 	
 	Window adjustment
 
-	Background tiling
-	Wall tiling
+	Background/wall/player... tiling
 
 	Player image
-	Player input (WASD, Escape)
+	Player input (WASD)
 	Player movement
 	Hook for moves
 	Moves on screen
@@ -68,7 +68,7 @@ void ft_debug(data_t *game)
 		ft_printf("%s", game->map[i]);
 	ft_printf("\nHeight of map -> %i\n", game->map_height);
 	ft_printf("Width of map -> %i\n", game->map_width);
-	ft_printf("Number of collectables -> %i\n", game->collectables);
+	ft_printf("Number of collectables -> %i\n", game->number_of_collectables);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/21 13:15:06 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:01:07 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static int	is_map_playable(data_t *game)
 		if (ft_strchr(game->map[i], 'E'))
 			exit_flag++;
 		if (ft_strchr(game->map[i], 'C'))
-			game->collectables++;
+			game->number_of_collectables++;
 	}
-	if (game->collectables < 1)
+	if (game->number_of_collectables < 1)
 		return (1);
 	if (player_flag != 1)
 		return (1);

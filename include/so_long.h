@@ -6,15 +6,15 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/21 13:19:51 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:01:47 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define W_WIDTH 1200
-# define W_HEIGHT 1200
+# define W_WIDTH 64
+# define W_HEIGHT 64
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft/include/libft.h"
@@ -25,12 +25,17 @@ typedef struct data_s
 	int		fd;
 	int		map_width;
 	int		map_height;
-	int		collectables;
+	int		number_of_collectables;
+
 	char	**map;
-	void	*collectable;
 	void 	*mlx;
-	void	*player;
 	void	*window;
+	void	*background;
+	void	*wall;
+	void	*player;
+	void	*collectable;
+	void	*enemy;
+	void	*exit;
 
 }			data_t;
 
