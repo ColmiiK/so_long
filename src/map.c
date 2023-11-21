@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/20 20:52:39 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:58:42 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static int is_map_playable(data_t *game)
 			game->collectables++;
 		i++;
 	}
+	if (game->collectables < 1)
+		return (0);
 	if (player_flag != 1)
 		return (0);
 	if (exit_flag != 1)
@@ -84,15 +86,15 @@ static int is_map_walled(data_t *game)
 	int i;
 
 	i = 0;
-	if (ft_strchr(game->map[0], '1') == 0)
+	if (ft_strchr(game->map[0], '0'))
 		return (0);
-	if (ft_strchr(game->map[game->map_height], '1') == 0) // SEG FAULT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	if (ft_strchr(game->map[game->map_height - 1], '0'))
 		return (0);
 	while (game->map[i]) // Checks for walls on the first and last column
 	{
 		if (game->map[i][0] != '1')
 			return (0);
-		if (game->map[i][game->map_width] != '1')
+		if (game->map[i][game->map_width - 1] != '1')
 			return (0);
 		i++;
 	}
