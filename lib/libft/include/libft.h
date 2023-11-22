@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:56:19 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/15 16:43:44 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:39:30 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,5 +484,6 @@ int					print_pointer(void *ptr);
  * 		from the file descriptor.
  */
 char				*get_next_line(int fd);
+char				*ft_strstr(const char *haystack, const char *needle);
 
 #endif

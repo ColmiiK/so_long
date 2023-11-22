@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/21 17:01:07 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:45:09 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ static int	add_to_map(data_t *game, char *line)
 	return (0);
 }
 
-void	populate_map(data_t *game, char *av)
+int	populate_map(data_t *game, char *av)
 {
 	char	*temp_line;
 
+	// if (ft_strstr(av, ".ber") == 0) FIX THIS!!!!!!!!
+	//  	return (1);
 	game->fd = open(av, O_RDONLY);
 	if (game->fd < 0)
-		return ;
+		return (1);
 	while (true)
 	{
 		temp_line = get_next_line(game->fd);
@@ -50,6 +52,7 @@ void	populate_map(data_t *game, char *av)
 	}
 	close(game->fd);
 	game->map_width = get_width(game->map[0]);
+	return (0);
 }
 
 static int	is_map_playable(data_t *game)

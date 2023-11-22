@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/21 17:19:24 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:34:30 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,17 @@
 	Window creation
 	Escape closes the window
 	Window error messasage
+	Background/wall/player... tiling
+	Player image
 	
 	
 	TODO:
-
+	
+	ONLY READ .BER FILES!!!
 	
 	Window adjustment
 
-	Background/wall/player... tiling
 
-	Player image
 	Player input (WASD)
 	Player movement
 	Hook for moves
