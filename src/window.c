@@ -6,22 +6,23 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/22 11:34:49 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:35:13 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* Hooks to control inputs */
-void ft_hook(void *param)
+void ft_keyhook(mlx_key_data_t keydata, void *param)
 {
-	mlx_t* mlx = param;
+	t_data *game;
 
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
+	game = param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(game->mlx);
 }
+
 /* This function should apply a texture to a spot in the window */
-void apply_image(data_t *game, char *texture_path, int x, int y)
+void apply_image(t_data *game, char *texture_path, int x, int y)
 {
 	mlx_texture_t *image_t;
 	void *temp;
@@ -31,7 +32,7 @@ void apply_image(data_t *game, char *texture_path, int x, int y)
 	mlx_image_to_window(game->mlx, temp, W_WIDTH * x, W_HEIGHT * y);
 }
 /* Run through the window putting textures in the correct places */
-void window_tiling(data_t *game)
+void window_tiling(t_data *game)
 {
 	int i;
 	int j;
@@ -60,13 +61,13 @@ void window_tiling(data_t *game)
 	}
 }
 /* Creation of window */
-int window_control(data_t *game)
+int window_control(t_data *game)
 {
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height, "so_long", true);
 	if (!game->mlx)
 		return (error_message('W'));
 	window_tiling(game);	
-	mlx_loop_hook(game->mlx, ft_hook, game->mlx);
+	mlx_key_hook(game->mlx, &ft_keyhook, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

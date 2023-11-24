@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/22 11:34:30 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:52:20 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 	Map reading
 	Map allocation
 	Map error checking
+	Only read .ber files
 	Map error message
 	Window creation
 	Escape closes the window
@@ -34,7 +35,6 @@
 	
 	TODO:
 	
-	ONLY READ .BER FILES!!!
 	
 	Window adjustment
 
@@ -59,11 +59,11 @@
 	Correct termination of program
 
 	Norminette OK
-	STATIC CHECK
+	Static check
 	Leak testing
 */
 
-void ft_debug(data_t *game)
+void ft_debug(t_data *game)
 {
 	for (int i = 0; i < game->map_height; i++)
 		ft_printf("%s", game->map[i]);
@@ -74,17 +74,18 @@ void ft_debug(data_t *game)
 
 int	main(int ac, char **av)
 {
-	data_t	game;
+	t_data game;
 	
-	ft_memset(&game, 0, sizeof(data_t));
+	ft_memset(&game, 0, sizeof(t_data));
 	if (ac == 2)
 	{
-		populate_map(&game, av[1]);
+		if (populate_map(&game, av[1]))
+			return (error_message('M'));
 		if (is_map_correct(&game))
-			return (1);
+			return (error_message('M'));
 		ft_debug(&game);
 		if (window_control(&game))
-			return (1);
+			return (error_message('W'));
 	}
 	mlx_terminate(game.mlx);
 }

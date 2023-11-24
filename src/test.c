@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:59 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/18 11:09:28 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:16:16 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void ft_hook(void* param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
-		
 		player->instances[0].y -= 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 		player->instances[0].y += 10;

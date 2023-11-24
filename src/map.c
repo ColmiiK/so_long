@@ -6,13 +6,13 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/22 11:45:09 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:42:10 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static int	add_to_map(data_t *game, char *line)
+static int	add_to_map(t_data *game, char *line)
 {
 	char	**temp;
 	int		i;
@@ -35,12 +35,12 @@ static int	add_to_map(data_t *game, char *line)
 	return (0);
 }
 
-int	populate_map(data_t *game, char *av)
+int	populate_map(t_data *game, char *av)
 {
 	char	*temp_line;
 
-	// if (ft_strstr(av, ".ber") == 0) FIX THIS!!!!!!!!
-	//  	return (1);
+	if (!ft_strnstr(av, ".ber", ft_strlen(av)))
+	 	return (1);
 	game->fd = open(av, O_RDONLY);
 	if (game->fd < 0)
 		return (1);
@@ -55,7 +55,7 @@ int	populate_map(data_t *game, char *av)
 	return (0);
 }
 
-static int	is_map_playable(data_t *game)
+static int	is_map_playable(t_data *game)
 {
 	int	i;
 	int	player_flag;
@@ -84,7 +84,7 @@ static int	is_map_playable(data_t *game)
 	return (0);
 }
 
-static int	is_map_walled(data_t *game)
+static int	is_map_walled(t_data *game)
 {
 	int	i;
 
@@ -104,11 +104,11 @@ static int	is_map_walled(data_t *game)
 	return (0);
 }
 
-int	is_map_correct(data_t *game)
+int	is_map_correct(t_data *game)
 {
 	if (is_map_playable(game))
-		return (error_message('M'));
+		return (1);
 	if (is_map_walled(game))
-		return (error_message('M'));
+		return (1);
 	return (0);
 }
