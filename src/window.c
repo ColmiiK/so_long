@@ -6,12 +6,29 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/24 14:35:13 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:52:41 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+/* Figure this one out */
+void move_player(t_data *game, char code)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if ()
+		}
+	}
+}
+/* Input detection and movement */
 void ft_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_data *game;
@@ -19,6 +36,14 @@ void ft_keyhook(mlx_key_data_t keydata, void *param)
 	game = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(game->mlx);
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+		move_player(game, 'W');
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		move_player(game, 'A');
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		move_player(game, 'S');
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		move_player(game, 'D');
 }
 
 /* This function should apply a texture to a spot in the window */
