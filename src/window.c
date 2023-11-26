@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/26 11:09:15 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:56:59 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void ft_keyhook(mlx_key_data_t keydata, void *param)
 		move_player_right(game);
 }
 
-void ft_hook(void *param)
-{
-	t_data *game;
+// void ft_hook(void *param)
+// {
+// 	t_data *game;
 
-	game = param;
-	window_tiling(game);
-}
+// 	game = param;
+// 	ft_printf("%i\n", game->number_of_collectables);
+// }
 
 /* Creation of window */
 int window_control(t_data *game)
@@ -83,8 +83,9 @@ int window_control(t_data *game)
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height, "so_long", true);
 	if (!game->mlx)
 		return (error_message('W'));
+	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
-	mlx_loop_hook(game->mlx, &ft_hook, game);
+	// mlx_loop_hook(game->mlx, &ft_hook, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

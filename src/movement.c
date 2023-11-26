@@ -6,16 +6,29 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/26 11:13:02 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:00:56 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void move_player_up(t_data *game)
+int	event_checker(t_data *game, int y, int x)
 {
-	int y;
-	int x;
+	if (game->map[y][x] == '1')
+		return (1);
+	if (game->map[y][x] == 'C')
+		game->number_of_collectables--;
+	if (game->map[y][x] == 'V')
+		ft_printf("Game over!\n");
+	if (game->map[y][x] == 'E' && game->number_of_collectables <= 0)
+		ft_printf("Finished game!\n");
+	return (0);
+}
+
+void	move_player_up(t_data *game)
+{
+	int	y;
+	int	x;
 
 	y = 0;
 	while (game->map[y])
@@ -25,10 +38,12 @@ void move_player_up(t_data *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				if (game->map[y - 1][x] != '1')
+				if (!event_checker(game, y - 1, x))
 				{
 					game->map[y][x] = '0';
 					game->map[y - 1][x] = 'P';
+					window_tiling(game);
+					return ;
 				}
 			}
 			x++;
@@ -37,10 +52,10 @@ void move_player_up(t_data *game)
 	}
 }
 
-void move_player_left(t_data *game)
+void	move_player_left(t_data *game)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (game->map[y])
@@ -50,10 +65,12 @@ void move_player_left(t_data *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				if (game->map[y][x - 1] != '1')
+				if (!event_checker(game, y, x - 1))
 				{
 					game->map[y][x] = '0';
 					game->map[y][x - 1] = 'P';
+					window_tiling(game);
+					return ;
 				}
 			}
 			x++;
@@ -61,11 +78,11 @@ void move_player_left(t_data *game)
 		y++;
 	}
 }
-/* FIX: Loops until it hits a wall */
-void move_player_down(t_data *game)
+
+void	move_player_down(t_data *game)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (game->map[y])
@@ -75,10 +92,12 @@ void move_player_down(t_data *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				if (game->map[y + 1][x] != '1')
+				if (!event_checker(game, y + 1, x))
 				{
 					game->map[y][x] = '0';
 					game->map[y + 1][x] = 'P';
+					window_tiling(game);
+					return ;
 				}
 			}
 			x++;
@@ -86,8 +105,8 @@ void move_player_down(t_data *game)
 		y++;
 	}
 }
-/* FIX: Loops until it hits a wall */
-void move_player_right(t_data *game)
+
+void	move_player_right(t_data *game)
 {
 	int y;
 	int x;
@@ -100,10 +119,12 @@ void move_player_right(t_data *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				if (game->map[y][x + 1] != '1')
+				if (!event_checker(game, y, x + 1))
 				{
 					game->map[y][x] = '0';
 					game->map[y][x + 1] = 'P';
+					window_tiling(game);
+					return ;
 				}
 			}
 			x++;
