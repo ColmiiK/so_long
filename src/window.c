@@ -6,45 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/24 16:52:41 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:09:15 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/* Figure this one out */
-void move_player(t_data *game, char code)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if ()
-		}
-	}
-}
-/* Input detection and movement */
-void ft_keyhook(mlx_key_data_t keydata, void *param)
-{
-	t_data *game;
-
-	game = param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(game->mlx);
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		move_player(game, 'W');
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		move_player(game, 'A');
-	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		move_player(game, 'S');
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		move_player(game, 'D');
-}
 
 /* This function should apply a texture to a spot in the window */
 void apply_image(t_data *game, char *texture_path, int x, int y)
@@ -85,14 +51,40 @@ void window_tiling(t_data *game)
 		i++;
 	}
 }
+/* Input detection and movement */
+void ft_keyhook(mlx_key_data_t keydata, void *param)
+{
+	t_data *game;
+
+	game = param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(game->mlx);
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+		move_player_up(game);
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		move_player_left(game);
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		move_player_down(game);
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		move_player_right(game);
+}
+
+void ft_hook(void *param)
+{
+	t_data *game;
+
+	game = param;
+	window_tiling(game);
+}
+
 /* Creation of window */
 int window_control(t_data *game)
 {
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height, "so_long", true);
 	if (!game->mlx)
 		return (error_message('W'));
-	window_tiling(game);	
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
+	mlx_loop_hook(game->mlx, &ft_hook, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

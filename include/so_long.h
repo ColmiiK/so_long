@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/24 12:41:24 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:10:11 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ int			is_map_correct(t_data *game);
 int			error_message(char code);
 size_t		get_width(char *str);
 int			window_control(t_data *game);
+void move_player_up(t_data *game);
+void move_player_left(t_data *game);
+void move_player_down(t_data *game);
+void move_player_right(t_data *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/24 13:52:20 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:13:29 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 	Window error messasage
 	Background/wall/player... tiling
 	Player image
+	Player input (WASD)
+	Hook for moves
 	
 	
 	TODO:
@@ -39,9 +41,7 @@
 	Window adjustment
 
 
-	Player input (WASD)
 	Player movement
-	Hook for moves
 	Moves on screen
 	Player collision
 	Player sprite movement
