@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/26 11:13:29 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:51:41 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 	Player image
 	Player input (WASD)
 	Hook for moves
+	Player movement
+	Player collision
+	Exit
+	Coin counter
+	Coin check for exit
 	
 	
 	TODO:
@@ -41,23 +46,14 @@
 	Window adjustment
 
 
-	Player movement
-	Moves on screen
-	Player collision
-	Player sprite movement
-
-	Exit
-	Coin image
-	Coin counter
-	Coin check for exit
-
 	Enemy image
+	Coin image
+	Moves on screen
+	Player sprite movement
 	Enemy movement
 	Enemy player tracking?
 	Gameover on enemy touch
-
 	Correct termination of program
-
 	Norminette OK
 	Static check
 	Leak testing
@@ -74,9 +70,10 @@ void ft_debug(t_data *game)
 
 int	main(int ac, char **av)
 {
-	t_data game;
-	
+	t_data	game;
+
 	ft_memset(&game, 0, sizeof(t_data));
+	game.moves = 0;
 	if (ac == 2)
 	{
 		if (populate_map(&game, av[1]))

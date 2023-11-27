@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/24 12:42:10 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:36:36 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	populate_map(t_data *game, char *av)
 	char	*temp_line;
 
 	if (!ft_strnstr(av, ".ber", ft_strlen(av)))
-	 	return (1);
+		return (1);
 	game->fd = open(av, O_RDONLY);
 	if (game->fd < 0)
 		return (1);

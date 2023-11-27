@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 10:54:03 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:54:00 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int	event_checker(t_data *game, int y, int x)
 	if (game->map[y][x] == 'V')
 		ft_printf("Game over!\n");
 	if (game->map[y][x] == 'E' && game->number_of_collectables == 0)
-		ft_printf("Finished game!\n");
+		ft_printf("Finished game in %i moves!\n", game->moves);
 	if (game->map[y][x] == 'E' && game->number_of_collectables != 0)
 		return (1);
 	return (0);
 }
-void update_map(t_data *game, int cur_y, int cur_x, int next_y, int next_x)
+void	update_map(t_data *game, int cur_y, int cur_x, int next_y, int next_x)
 {
 	game->map[cur_y][cur_x] = '0';
 	game->map[next_y][next_x] = 'P';
 	apply_image(game, "./textures/player.png", next_x, next_y);
 	apply_image(game, "./textures/background.png", cur_x, cur_y);
-}
+}			
 
 void	move_player(t_data *game, int mod_y, int mod_x)
 {
@@ -50,6 +50,8 @@ void	move_player(t_data *game, int mod_y, int mod_x)
 				if (!event_checker(game, y + mod_y, x + mod_x))
 				{
 					update_map(game, y, x, y + mod_y, x + mod_x);
+					game->moves++;
+					ft_printf("You have moved %i times!\n", game->moves);
 					return ;
 				}
 			}
