@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/26 16:42:28 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:54:03 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,15 @@ int	event_checker(t_data *game, int y, int x)
 		return (1);
 	return (0);
 }
+void update_map(t_data *game, int cur_y, int cur_x, int next_y, int next_x)
+{
+	game->map[cur_y][cur_x] = '0';
+	game->map[next_y][next_x] = 'P';
+	apply_image(game, "./textures/player.png", next_x, next_y);
+	apply_image(game, "./textures/background.png", cur_x, cur_y);
+}
 
-void	move_player_up(t_data *game)
+void	move_player(t_data *game, int mod_y, int mod_x)
 {
 	int	y;
 	int	x;
@@ -40,92 +47,9 @@ void	move_player_up(t_data *game)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				if (!event_checker(game, y - 1, x))
+				if (!event_checker(game, y + mod_y, x + mod_x))
 				{
-					game->map[y][x] = '0';
-					game->map[y - 1][x] = 'P';
-					window_tiling(game);
-					return ;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-void	move_player_left(t_data *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == 'P')
-			{
-				if (!event_checker(game, y, x - 1))
-				{
-					game->map[y][x] = '0';
-					game->map[y][x - 1] = 'P';
-					window_tiling(game);
-					return ;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-void	move_player_down(t_data *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == 'P')
-			{
-				if (!event_checker(game, y + 1, x))
-				{
-					game->map[y][x] = '0';
-					game->map[y + 1][x] = 'P';
-					window_tiling(game);
-					return ;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-void	move_player_right(t_data *game)
-{
-	int y;
-	int x;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == 'P')
-			{
-				if (!event_checker(game, y, x + 1))
-				{
-					game->map[y][x] = '0';
-					game->map[y][x + 1] = 'P';
-					window_tiling(game);
+					update_map(game, y, x, y + mod_y, x + mod_x);
 					return ;
 				}
 			}
