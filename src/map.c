@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 11:36:36 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:39:35 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,24 @@ int	populate_map(t_data *game, char *av)
 static int	is_map_playable(t_data *game)
 {
 	int	i;
-	int	player_flag;
-	int	exit_flag;
 
 	i = -1;
-	player_flag = 0;
-	exit_flag = 0;
 	while (game->map[++i])
 	{
 		if (get_width(game->map[i]) != (size_t)game->map_width)
 			return (1);
 		if (ft_strchr(game->map[i], 'P'))
-			player_flag++;
+			game->p_count++;
 		if (ft_strchr(game->map[i], 'E'))
-			exit_flag++;
+			game->e_count++;
 		if (ft_strchr(game->map[i], 'C'))
-			game->number_of_collectables++;
+			game->c_count++;
 	}
-	if (game->number_of_collectables < 1)
+	if (game->c_count < 1)
 		return (1);
-	if (player_flag != 1)
+	if (game->p_count != 1)
 		return (1);
-	if (exit_flag != 1)
+	if (game->e_count != 1)
 		return (1);
 	return (0);
 }
@@ -110,5 +106,6 @@ int	is_map_correct(t_data *game)
 		return (1);
 	if (is_map_walled(game))
 		return (1);
+	obtain_player_exit_pos(game);
 	return (0);
 }
