@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:12:46 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/28 13:37:41 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:51:00 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char **map_creation(t_data *game)
 	return (check_map);
 }
 
-int is_map_playable(t_data *game)
+int is_map_doable(t_data *game)
 {
 	char **valid;
 

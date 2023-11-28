@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 12:39:47 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:57:53 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,16 @@ void obtain_player_exit_pos(t_data *game)
 		}
 		i++;
 	}
+}
+void ft_annihilation(t_data *game)
+{
+	int i;
+
+	i = -1;
+	while (++i < game->map_height)
+	{
+		free(game->map[i]);
+	}
+	free(game->map);
+	mlx_terminate(game->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 13:47:21 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:58:19 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	apply_image(t_data *game, char *texture_path, int x, int y)
 {
 	mlx_texture_t	*image_t;
-	void			*temp;
+	void *temp;
 
 	image_t = mlx_load_png(texture_path);
 	temp = mlx_texture_to_image(game->mlx, image_t);
@@ -73,14 +73,6 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 			game->c_count);
 }
 
-// void ft_hook(void *param)
-// {
-// 	t_data *game;
-
-// 	game = param;
-// 	ft_printf("%i\n", game->number_of_collectables);
-// }
-
 /* Creation of window */
 int	window_control(t_data *game)
 {
@@ -90,7 +82,6 @@ int	window_control(t_data *game)
 		return (error_message('W'));
 	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
-	// mlx_loop_hook(game->mlx, &ft_hook, game);
 	mlx_loop(game->mlx);
 	return (0);
 }
