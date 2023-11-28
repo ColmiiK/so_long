@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 11:47:28 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:47:21 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 		move_player(game, 0, +1);
 	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
 		ft_printf("You have to pick up %i collectables!\n",
-			game->number_of_collectables);
+			game->c_count);
 }
 
 // void ft_hook(void *param)

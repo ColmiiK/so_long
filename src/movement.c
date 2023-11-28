@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 11:54:00 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:47:34 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	event_checker(t_data *game, int y, int x)
 	if (game->map[y][x] == '1')
 		return (1);
 	if (game->map[y][x] == 'C')
-		game->number_of_collectables--;
+		game->c_count--;
 	if (game->map[y][x] == 'V')
 		ft_printf("Game over!\n");
-	if (game->map[y][x] == 'E' && game->number_of_collectables == 0)
+	if (game->map[y][x] == 'E' && game->c_count == 0)
 		ft_printf("Finished game in %i moves!\n", game->moves);
-	if (game->map[y][x] == 'E' && game->number_of_collectables != 0)
+	if (game->map[y][x] == 'E' && game->c_count != 0)
 		return (1);
 	return (0);
 }

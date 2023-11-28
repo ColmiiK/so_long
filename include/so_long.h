@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 13:39:25 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:58:58 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,7 @@ void		window_tiling(t_data *game);
 
 void		apply_image(t_data *game, char *texture_path, int x, int y);
 void		move_player(t_data *game, int mod_y, int mod_x);
-void		apply_image_wall(t_data *game, char *texture_path, int x, int y);
-void		apply_image_collectable(t_data *game, char *texture_path, int x,
-				int y);
-void		apply_image_background(t_data *game, char *texture_path, int x,
-				int y);
-void		apply_image_player(t_data *game, char *texture_path, int x, int y);
-void		apply_image_exit(t_data *game, char *texture_path, int x, int y);
-void		apply_image_enemy(t_data *game, char *texture_path, int x, int y);
-bool		is_map_doable(t_data *game);
 void		obtain_player_exit_pos(t_data *game);
+int			is_map_playable(t_data *game);
 
 #endif

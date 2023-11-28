@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 13:19:13 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:37:07 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@
 	Static check
 	Leak testing
 */
+void leaks(void)
+{
+	system("leaks -q so_long");
+}
 
 void ft_debug(t_data *game)
 {
@@ -65,13 +69,16 @@ void ft_debug(t_data *game)
 		ft_printf("%s", game->map[i]);
 	ft_printf("\nHeight of map -> %i\n", game->map_height);
 	ft_printf("Width of map -> %i\n", game->map_width);
-	ft_printf("Number of collectables -> %i\n", game->number_of_collectables);
+	ft_printf("Number of collectables -> %i\n", game->c_count);
+	ft_printf("Player starting position -> %i.%i\n", game->player_x_pos, game->player_y_pos);
+	ft_printf("Exit starting position -> %i.%i\n", game->exit_x_pos, game->exit_y_pos);
 }
 
 int	main(int ac, char **av)
 {
 	t_data	game;
 
+	atexit(leaks);
 	ft_memset(&game, 0, sizeof(t_data));
 	game.moves = 0;
 	if (ac == 2)
@@ -80,7 +87,7 @@ int	main(int ac, char **av)
 			return (error_message('M'));
 		if (is_map_correct(&game))
 			return (error_message('M'));
-		if (is_map_doable(&game) == false)
+		if (is_map_playable(&game))
 			return (error_message('D'));
 		ft_debug(&game);
 		if (window_control(&game))
