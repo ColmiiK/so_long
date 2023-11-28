@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/27 13:47:34 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:29:22 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	update_map(t_data *game, int cur_y, int cur_x, int next_y, int next_x)
 {
 	game->map[cur_y][cur_x] = '0';
 	game->map[next_y][next_x] = 'P';
-	apply_image(game, "./textures/player.png", next_x, next_y);
-	apply_image(game, "./textures/background.png", cur_x, cur_y);
+	apply_image(game, game->player_img, next_x, next_y);
+	apply_image(game, game->background_img, cur_x, cur_y);
 }			
 
 void	move_player(t_data *game, int mod_y, int mod_x)

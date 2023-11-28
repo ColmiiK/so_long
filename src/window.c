@@ -6,21 +6,32 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/28 16:58:19 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:29:53 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* This function should apply a texture to a spot in the window */
-void	apply_image(t_data *game, char *texture_path, int x, int y)
+void load_images(t_data *game)
 {
-	mlx_texture_t	*image_t;
-	void *temp;
+	game->wall_tex = mlx_load_png("./textures/wall.png");
+	game->background_tex = mlx_load_png("./textures/background.png");
+	game->player_tex = mlx_load_png("./textures/player.png");
+	game->collectable_tex = mlx_load_png("./textures/collectable.png");
+	game->exit_tex = mlx_load_png("./textures/exit.png");
+	game->enemy_tex = mlx_load_png("./textures/enemy.png");
 
-	image_t = mlx_load_png(texture_path);
-	temp = mlx_texture_to_image(game->mlx, image_t);
-	mlx_image_to_window(game->mlx, temp, W_WIDTH * x, W_HEIGHT * y);
+	game->wall_img = mlx_texture_to_image(game->mlx, game->wall_tex);
+	game->background_img = mlx_texture_to_image(game->mlx, game->background_tex);
+	game->player_img = mlx_texture_to_image(game->mlx, game->player_tex);
+	game->collectable_img = mlx_texture_to_image(game->mlx, game->collectable_tex);
+	game->exit_img = mlx_texture_to_image(game->mlx, game->exit_tex);
+	game->enemy_img = mlx_texture_to_image(game->mlx, game->enemy_tex);
+}
+
+void	apply_image(t_data *game, void *img, int x, int y)
+{
+	mlx_image_to_window(game->mlx, img, W_WIDTH * x, W_HEIGHT * y);
 }
 
 /* Run through the window putting textures in the correct places */
@@ -36,17 +47,17 @@ void	window_tiling(t_data *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				apply_image(game, "./textures/wall.png", j, i);
+				apply_image(game, game->wall_img, j, i);
 			if (game->map[i][j] == '0')
-				apply_image(game, "./textures/background.png", j, i);
+				apply_image(game, game->background_img, j, i);
 			if (game->map[i][j] == 'P')
-				apply_image(game, "./textures/player.png", j, i);
+				apply_image(game, game->player_img, j, i);
 			if (game->map[i][j] == 'E')
-				apply_image(game, "./textures/exit.png", j, i);
+				apply_image(game, game->exit_img, j, i);
 			if (game->map[i][j] == 'C')
-				apply_image(game, "./textures/collectable.png", j, i);
+				apply_image(game, game->collectable_img, j, i);
 			if (game->map[i][j] == 'V')
-				apply_image(game, "./textures/enemy.png", j, i);
+				apply_image(game, game->enemy_img, j, i);
 			j++;
 		}
 		i++;
@@ -79,7 +90,8 @@ int	window_control(t_data *game)
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height,
 		"so_long", true);
 	if (!game->mlx)
-		return (error_message('W'));
+		return (error_message(game, 'W'));
+	load_images(game);
 	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
 	mlx_loop(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/28 15:56:36 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:26:29 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,15 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		if (populate_map(&game, av[1]))
-			return (error_message('M'));
+			return (error_message(&game, 'M'));
 		if (is_map_correct(&game))
-			return (error_message('M'));
+			return (error_message(&game, 'M'));
 		if (is_map_doable(&game))
-			return (error_message('D'));
+			return (error_message(&game, 'D'));
 		ft_debug(&game);
 		if (window_control(&game))
-			return (error_message('W'));
+			return (error_message(&game, 'W'));
+		ft_annihilation(&game);
 	}
-	ft_annihilation(&game);
+	mlx_terminate(game.mlx);
 }
