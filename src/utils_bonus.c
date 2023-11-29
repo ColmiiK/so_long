@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 16:15:14 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:16:34 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 size_t	get_width(char *str)
 {
@@ -83,7 +83,7 @@ int	check_for_letters(t_data *game)
 	int		j;
 	char	*allowed;
 
-	allowed = "10PCE\n";
+	allowed = "10PCEVH\n";
 	i = -1;
 	while (game->map[++i])
 	{
