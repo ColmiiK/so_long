@@ -6,13 +6,13 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/28 17:29:53 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:24:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void load_images(t_data *game)
+void	load_images(t_data *game)
 {
 	game->wall_tex = mlx_load_png("./textures/wall.png");
 	game->background_tex = mlx_load_png("./textures/background.png");
@@ -20,21 +20,23 @@ void load_images(t_data *game)
 	game->collectable_tex = mlx_load_png("./textures/collectable.png");
 	game->exit_tex = mlx_load_png("./textures/exit.png");
 	game->enemy_tex = mlx_load_png("./textures/enemy.png");
-
 	game->wall_img = mlx_texture_to_image(game->mlx, game->wall_tex);
-	game->background_img = mlx_texture_to_image(game->mlx, game->background_tex);
+	game->background_img = mlx_texture_to_image(game->mlx,
+			game->background_tex);
 	game->player_img = mlx_texture_to_image(game->mlx, game->player_tex);
-	game->collectable_img = mlx_texture_to_image(game->mlx, game->collectable_tex);
+	game->collectable_img = mlx_texture_to_image(game->mlx,
+			game->collectable_tex);
 	game->exit_img = mlx_texture_to_image(game->mlx, game->exit_tex);
 	game->enemy_img = mlx_texture_to_image(game->mlx, game->enemy_tex);
 }
 
 void	apply_image(t_data *game, void *img, int x, int y)
 {
+	mlx_image_to_window(game->mlx, game->background_img,
+		W_WIDTH * x, W_HEIGHT * y);
 	mlx_image_to_window(game->mlx, img, W_WIDTH * x, W_HEIGHT * y);
 }
 
-/* Run through the window putting textures in the correct places */
 void	window_tiling(t_data *game)
 {
 	int	i;
@@ -63,7 +65,7 @@ void	window_tiling(t_data *game)
 		i++;
 	}
 }
-/* Input detection and movement */
+
 void	ft_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_data	*game;
@@ -88,7 +90,7 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 int	window_control(t_data *game)
 {
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height,
-		"so_long", true);
+			"so_long", false);
 	if (!game->mlx)
 		return (error_message(game, 'W'));
 	load_images(game);

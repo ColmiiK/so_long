@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/28 17:26:10 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:19:18 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,22 @@ typedef struct s_data
 	int		player_y_pos;
 	int		exit_x_pos;
 	int		exit_y_pos;
+	int		x;
+	int		y;
 
 	char	**map;
 	void	*wall_img;
-	void 	*background_img;
-	void 	*player_img;
-	void 	*exit_img;
-	void 	*collectable_img;
-	void 	*enemy_img;
-	void 	*wall_tex;
-	void 	*background_tex;
-	void 	*player_tex;
-	void 	*exit_tex;
-	void 	*collectable_tex;
-	void 	*enemy_tex;
+	void	*background_img;
+	void	*player_img;
+	void	*exit_img;
+	void	*collectable_img;
+	void	*enemy_img;
+	void	*wall_tex;
+	void	*background_tex;
+	void	*player_tex;
+	void	*exit_tex;
+	void	*collectable_tex;
+	void	*enemy_tex;
 	void	*window;
 }			t_data;
 
