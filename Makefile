@@ -8,7 +8,7 @@ MLX42 = lib/MLX42
 SRC_DIR = src/
 OBJ_DIR = obj/
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 AR = ar rcs
 
@@ -27,9 +27,12 @@ WHITE = \033[0;97m
 #Sources
 
 SRC_FILES = main map error_check utils window movement path
+B_SRC_FILES = main_bonus map_bonus error_check_bonus utils_bonus window_bonus movement_bonus path_bonus
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+B_SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(B_SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+B_OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRC_FILES)))
 
 ###
 
@@ -71,7 +74,13 @@ re:			fclean all
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT)/src
 
+bonus: $(B_OBJ)
+			@make -C $(LIBFT)
+			@make -C $(MLX42)
+			@$(CC) $(CFLAGS) $(B_OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+			@echo "$(MAGENTA)so_long bonus compiled!$(DEF_COLOR)"
+
 map: $(NAME)
 			@./so_long maps/map_0.ber
 
-.PHONY: all clean fclean re norm map
+.PHONY: all clean fclean re norm map bonus
