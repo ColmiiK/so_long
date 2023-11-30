@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:39:55 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 13:12:57 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:07:10 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long_bonus.h"
+#include "../../include/so_long_bonus.h"
 
 int	error_message(t_data *game, char code)
 {

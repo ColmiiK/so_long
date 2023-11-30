@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 16:16:34 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:07:26 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long_bonus.h"
+#include "../../include/so_long_bonus.h"
 
 size_t	get_width(char *str)
 {
