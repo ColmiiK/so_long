@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 12:24:51 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:00:43 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	load_images(t_data *game)
 {
-	game->wall_tex = mlx_load_png("./textures/wall.png");
-	game->background_tex = mlx_load_png("./textures/background.png");
-	game->player_tex = mlx_load_png("./textures/player.png");
-	game->collectable_tex = mlx_load_png("./textures/collectable.png");
-	game->exit_tex = mlx_load_png("./textures/exit.png");
-	game->enemy_tex = mlx_load_png("./textures/enemy.png");
+	game->wall_tex = mlx_load_png("./textures/wall/wall_0.png");
+	game->background_tex = mlx_load_png("./textures/background/background.png");
+	game->player_tex = mlx_load_png("./textures/player/baba_0.png");
+	game->collectable_tex = mlx_load_png("./textures/collectable/cheese_0.png");
+	game->exit_tex = mlx_load_png("./textures/exit/flag_0.png");
+	game->enemy_tex = mlx_load_png("./textures/enemy/keke_0.png");
 	game->wall_img = mlx_texture_to_image(game->mlx, game->wall_tex);
 	game->background_img = mlx_texture_to_image(game->mlx,
 			game->background_tex);
