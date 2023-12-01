@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/30 13:07:22 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:06:25 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	move_player(t_data *game, int mod_y, int mod_x)
 				{
 					update_map(game, game->y + mod_y, game->x + mod_x);
 					game->moves++;
-					ft_printf("You have moved %i times!\n", game->moves);
+					if (game->counter)
+						mlx_delete_image(game->mlx, game->counter);
+					game->counter = mlx_put_string(game->mlx, ft_itoa(game->moves), 0, 0);
 					return ;
 				}
 			}

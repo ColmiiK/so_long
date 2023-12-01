@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 16:12:31 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:34:03 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_data
 	void	*collectable_tex;
 	void	*enemy_tex;
 	void	*window;
+	void	*counter;
+	int 	frame_counter;
+	int 	frame_duration;
 }			t_data;
 
 int			populate_map(t_data *game, char *av);

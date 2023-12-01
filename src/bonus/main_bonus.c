@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/30 13:07:18 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:08:07 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 			return (error_message(&game, 'D'));
 		if (window_control(&game))
 			return (error_message(&game, 'W'));
+		ft_printf("You finished the game in %i moves!\n", game.moves);
 		ft_annihilation(&game);
 	}
 }

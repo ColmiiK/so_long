@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/30 13:10:41 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:53:40 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,19 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 			game->c_count);
 }
 
+void ft_hook(void *param)
+{
+	t_data *game;
+
+	game = param;
+	game->frame_counter++;
+	if (game->frame_counter >= game->frame_duration)
+	{
+		ft_printf("One frame has passed.\n");
+		game->frame_counter = 0;
+	}	
+}
+
 int	window_control(t_data *game)
 {
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height,
@@ -94,7 +107,10 @@ int	window_control(t_data *game)
 		return (error_message(game, 'W'));
 	load_images(game);
 	window_tiling(game);
+	game->frame_counter = 0;
+	game->frame_duration = 300;
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
+	mlx_loop_hook(game->mlx, &ft_hook, game);
 	mlx_loop(game->mlx);
 	return (0);
 }
