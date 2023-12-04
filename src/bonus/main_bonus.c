@@ -6,16 +6,22 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 15:56:54 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:10:00 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_bonus.h>
 
+void leaks()
+{
+	system("leaks -q so_long");
+}
+
 int	main(int ac, char **av)
 {
 	t_data	game;
 
+	atexit(leaks);
 	if (ac == 1)
 		return (ft_printf("Error\nNo map was provided.\n"));
 	if (ac > 2)

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 16:37:40 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:21:37 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	event_checker(t_data *game, int y, int x)
 	if (game->map[y][x] == 'H')
 		mlx_close_window(game->mlx);
 	if (game->map[y][x] == 'E' && game->c_count == 0)
+	{
+		ft_printf("Congratulations! You finished the game in %i moves!\n", game->moves + 1);
 		mlx_close_window(game->mlx);
+	}
 	if (game->map[y][x] == 'E' && game->c_count != 0)
 		return (1);
 	return (0);
@@ -61,5 +64,4 @@ void	move_player(t_data *game, int mod_y, int mod_x)
 		}
 		game->y++;
 	}
-
 }

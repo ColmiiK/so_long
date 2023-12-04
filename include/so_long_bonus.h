@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 16:43:30 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:07:30 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef struct s_data
 	int		c_count;
 	int		p_count;
 	int		e_count;
-	int 	v_e_count;
+	int		v_e_count;
 	int		h_e_count;
 	int		moves;
-	void 	*counter;
+	void	*counter;
 	int		player_x_pos;
 	int		player_y_pos;
 	int		exit_x_pos;
@@ -42,8 +42,8 @@ typedef struct s_data
 	int		y;
 	bool	v_enemy_flag;
 	bool	h_enemy_flag;
-	int frame_counter;
-	int frame_duration;
+	int		frame_counter;
+	int		frame_duration;
 
 	char	**map;
 	void	*wall_i;
@@ -75,10 +75,10 @@ int			is_map_doable(t_data *game);
 void		ft_annihilation(t_data *game);
 int			check_for_letters(t_data *game);
 void		load_sprites(t_data *game);
-void move_vertical_enemy(t_data *game);
-void move_horizontal_enemy(t_data *game);
-void r_move_vertical_enemy(t_data *game);
-void r_move_horizontal_enemy(t_data *game);
-void enemy_movement(t_data *game);
+void		move_vertical_enemy(t_data *game);
+void		move_horizontal_enemy(t_data *game);
+void		r_move_vertical_enemy(t_data *game);
+void		r_move_horizontal_enemy(t_data *game);
+void		enemy_movement(t_data *game);
 
 #endif
