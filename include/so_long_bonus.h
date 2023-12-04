@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/01 11:34:03 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:09:25 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 	int		p_count;
 	int		e_count;
 	int		moves;
+	void 	*counter;
 	int		player_x_pos;
 	int		player_y_pos;
 	int		exit_x_pos;
@@ -39,22 +40,19 @@ typedef struct s_data
 	int		y;
 
 	char	**map;
-	void	*wall_img;
-	void	*background_img;
-	void	*player_img;
-	void	*exit_img;
-	void	*collectable_img;
-	void	*enemy_img;
-	void	*wall_tex;
-	void	*background_tex;
-	void	*player_tex;
-	void	*exit_tex;
-	void	*collectable_tex;
-	void	*enemy_tex;
+	void	*wall_i;
+	void	*background_i;
+	void	*player_i;
+	void	*exit_i;
+	void	*collectable_i;
+	void	*enemy_i;
+	void	*wall_t;
+	void	*background_t;
+	void	*player_t;
+	void	*exit_t;
+	void	*collectable_t;
+	void	*enemy_t;
 	void	*window;
-	void	*counter;
-	int 	frame_counter;
-	int 	frame_duration;
 }			t_data;
 
 int			populate_map(t_data *game, char *av);
@@ -70,5 +68,8 @@ void		obtain_player_exit_pos(t_data *game);
 int			is_map_doable(t_data *game);
 void		ft_annihilation(t_data *game);
 int			check_for_letters(t_data *game);
+void		load_sprites(t_data *game);
+void move_vertical_enemy(t_data *game);
+void move_horizontal_enemy(t_data *game);
 
 #endif

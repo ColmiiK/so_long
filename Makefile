@@ -6,6 +6,7 @@ INCLUDE = include
 LIBFT = lib/libft
 MLX42 = lib/MLX42
 SRC_DIR = src/
+B_SRC_DIR = src/bonus/
 OBJ_DIR = obj/
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
@@ -25,12 +26,12 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 #Sources
-
-SRC_FILES = main map error_check utils window movement path
-B_SRC_FILES = main_bonus map_bonus error_check_bonus utils_bonus window_bonus movement_bonus path_bonus
+	
+SRC_FILES = main map error_check utils window movement path sprites
+B_SRC_FILES = main_bonus map_bonus error_check_bonus utils_bonus window_bonus movement_bonus path_bonus sprites_bonus
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-B_SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(B_SRC_FILES)))
+B_SRC = $(addprefix $(B_SRC_DIR), $(addsuffix .c, $(B_SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 B_OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(B_SRC_FILES)))
 
@@ -43,12 +44,16 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			@make -C $(LIBFT)
 			@make -C $(MLX42)
-			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)%.o: $(B_SRC_DIR)%.c | $(OBJF)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
@@ -80,7 +85,7 @@ bonus: $(B_OBJ)
 			@$(CC) $(CFLAGS) $(B_OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(MAGENTA)so_long bonus compiled!$(DEF_COLOR)"
 
-map: $(NAME)
+map:
 			@./so_long maps/map_0.ber
 
 .PHONY: all clean fclean re norm map bonus

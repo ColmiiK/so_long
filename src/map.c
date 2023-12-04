@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 16:11:58 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:07:22 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include <so_long.h>
 
 static int	add_to_map(t_data *game, char *line)
 {

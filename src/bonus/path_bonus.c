@@ -6,11 +6,11 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:12:46 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/30 13:07:24 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:08:40 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long_bonus.h"
+#include <so_long_bonus.h>
 
 static void	free_map(char **map)
 {

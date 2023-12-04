@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/11/29 16:12:35 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:52:16 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ typedef struct s_data
 	int		y;
 
 	char	**map;
-	void	*wall_img;
-	void	*background_img;
-	void	*player_img;
-	void	*exit_img;
-	void	*collectable_img;
-	void	*enemy_img;
-	void	*wall_tex;
-	void	*background_tex;
-	void	*player_tex;
-	void	*exit_tex;
-	void	*collectable_tex;
-	void	*enemy_tex;
+	void	*wall_i;
+	void	*background_i;
+	void	*player_i;
+	void	*exit_i;
+	void	*collectable_i;
+	void	*enemy_i;
+	void	*wall_t;
+	void	*background_t;
+	void	*player_t;
+	void	*exit_t;
+	void	*collectable_t;
+	void	*enemy_t;
 	void	*window;
 }			t_data;
 
@@ -67,5 +67,6 @@ void		obtain_player_exit_pos(t_data *game);
 int			is_map_doable(t_data *game);
 void		ft_annihilation(t_data *game);
 int			check_for_letters(t_data *game);
+void		load_sprites(t_data *game);
 
 #endif
