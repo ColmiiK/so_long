@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:11:57 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:37:40 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	update_map(t_data *game, int next_y, int next_x)
 
 void	move_player(t_data *game, int mod_y, int mod_x)
 {
-	move_vertical_enemy(game);
-	move_horizontal_enemy(game);
 	game->y = 0;
 	while (game->map[game->y])
 	{
@@ -64,54 +62,4 @@ void	move_player(t_data *game, int mod_y, int mod_x)
 		game->y++;
 	}
 
-}
-
-void move_vertical_enemy(t_data *game)
-{
-	game->y = 0;
-	while (game->map[game->y])
-	{
-		game->x = 0;
-		while (game->map[game->y][game->x])
-		{
-			if (game->map[game->y][game->x] == 'V')
-			{
-				if (game->map[game->y + 1][game->x] == '0')
-				{
-					game->map[game->y][game->x] = '0';
-					game->map[game->y + 1][game->x] = 'V';
-					apply_image(game, game->enemy_i, game->x, game->y + 1);
-					apply_image(game, game->background_i, game->x, game->y);
-					return ;
-				}
-			}
-			game->x++;
-		}
-		game->y++;
-	}
-}
-
-void move_horizontal_enemy(t_data *game)
-{
-	game->y = 0;
-	while (game->map[game->y])
-	{
-		game->x = 0;
-		while (game->map[game->y][game->x])
-		{
-			if (game->map[game->y][game->x] == 'H')
-			{
-				if (game->map[game->y][game->x + 1] == '0')
-				{
-					game->map[game->y][game->x] = '0';
-					game->map[game->y][game->x + 1] = 'H';
-					apply_image(game, game->enemy_i, game->x + 1, game->y);
-					apply_image(game, game->background_i, game->x, game->y);
-					return ;
-				}
-			}
-			game->x++;
-		}
-		game->y++;
-	}
 }

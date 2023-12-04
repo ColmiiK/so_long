@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:08:31 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:45:06 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	window_tiling(t_data *game)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (game->map[i])
+	i = -1;
+	while (game->map[++i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == '1')
 				apply_image(game, game->wall_i, j, i);
@@ -44,9 +44,7 @@ void	window_tiling(t_data *game)
 				apply_image(game, game->enemy_i, j, i);
 			if (game->map[i][j] == 'H')
 				apply_image(game, game->enemy_i, j, i);
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -66,8 +64,21 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		move_player(game, 0, +1);
 	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
-		ft_printf("BONUS: You have to pick up %i collectables!\n",
+		ft_printf("You have to pick up %i collectables!\n",
 			game->c_count);
+}
+
+void ft_loop(void *param)
+{
+	t_data *game;
+
+	game = param;
+	game->frame_counter++;
+	if (game->frame_counter > game->frame_duration)
+	{
+		enemy_movement(game);
+		game->frame_counter = 0;	
+	}
 }
 
 int	window_control(t_data *game)
@@ -78,6 +89,9 @@ int	window_control(t_data *game)
 	load_sprites(game);
 	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
+	game->frame_counter = 0;
+	game->frame_duration = 10;
+	mlx_loop_hook(game->mlx, &ft_loop, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:08:10 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:56:54 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 		return (ft_printf("Error\nMore than one argument provided.\n"));
 	ft_memset(&game, 0, sizeof(t_data));
 	game.moves = 0;
+	game.v_enemy_flag = 0;
+	game.h_enemy_flag = 0;
 	if (ac == 2)
 	{
 		if (populate_map(&game, av[1]))

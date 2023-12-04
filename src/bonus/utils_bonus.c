@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:08:26 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:45:39 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_annihilation(t_data *game)
 		mlx_delete_image(game->mlx, game->collectable_i);
 		mlx_delete_image(game->mlx, game->exit_i);
 		mlx_delete_image(game->mlx, game->enemy_i);
-
 		mlx_delete_texture(game->wall_t);
 		mlx_delete_texture(game->background_t);
 		mlx_delete_texture(game->player_t);
