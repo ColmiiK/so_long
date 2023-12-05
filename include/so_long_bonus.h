@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 17:07:30 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:57:16 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_data
 {
-	void	*mlx;
+	mlx_t	*mlx;
 	int		fd;
 	int		map_width;
 	int		map_height;
@@ -42,8 +42,7 @@ typedef struct s_data
 	int		y;
 	bool	v_enemy_flag;
 	bool	h_enemy_flag;
-	int		frame_counter;
-	int		frame_duration;
+	double	time;
 
 	char	**map;
 	void	*wall_i;
@@ -52,12 +51,23 @@ typedef struct s_data
 	void	*exit_i;
 	void	*collectable_i;
 	void	*enemy_i;
-	void	*wall_t;
 	void	*background_t;
-	void	*player_t;
-	void	*exit_t;
-	void	*collectable_t;
-	void	*enemy_t;
+	void	*wall_t_0;
+	void	*player_t_0;
+	void	*exit_t_0;
+	void	*collectable_t_0;
+	void	*enemy_t_0;
+	void	*wall_t_1;
+	void	*player_t_1;
+	void	*exit_t_1;
+	void	*collectable_t_1;
+	void	*enemy_t_1;
+	void	*wall_t_2;
+	void	*player_t_2;
+	void	*exit_t_2;
+	void	*collectable_t_2;
+	void	*enemy_t_2;
+	int		anim_counter;
 	void	*window;
 }			t_data;
 
@@ -74,11 +84,17 @@ void		obtain_player_exit_pos(t_data *game);
 int			is_map_doable(t_data *game);
 void		ft_annihilation(t_data *game);
 int			check_for_letters(t_data *game);
-void		load_sprites(t_data *game);
 void		move_vertical_enemy(t_data *game);
 void		move_horizontal_enemy(t_data *game);
 void		r_move_vertical_enemy(t_data *game);
 void		r_move_horizontal_enemy(t_data *game);
 void		enemy_movement(t_data *game);
+void		animation(t_data *game);
+void	load_textures(t_data *game);
+void load_images_0(t_data *game);
+void load_images_1(t_data *game);
+void load_images_2(t_data *game);
+void mini_window_tiling(t_data *game);
+void delete_images(t_data *game);
 
 #endif

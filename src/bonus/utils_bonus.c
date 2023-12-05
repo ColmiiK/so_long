@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 17:25:45 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:14:32 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	ft_annihilation(t_data *game)
 		mlx_delete_image(game->mlx, game->exit_i);
 		mlx_delete_image(game->mlx, game->enemy_i);
 		mlx_delete_image(game->mlx, game->counter); /* <- NOT CORRECTLY FREEING MEMORY */
-		mlx_delete_texture(game->wall_t);
 		mlx_delete_texture(game->background_t);
-		mlx_delete_texture(game->player_t);
-		mlx_delete_texture(game->collectable_t);
-		mlx_delete_texture(game->exit_t);
-		mlx_delete_texture(game->enemy_t);
+		mlx_delete_texture(game->wall_t_0);
+		mlx_delete_texture(game->player_t_0);
+		mlx_delete_texture(game->collectable_t_0);
+		mlx_delete_texture(game->exit_t_0);
+		mlx_delete_texture(game->enemy_t_0);
 		mlx_terminate(game->mlx);
 	}
 }

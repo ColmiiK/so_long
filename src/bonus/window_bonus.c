@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 16:45:06 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:09:40 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void	apply_image(t_data *game, void *img, int x, int y)
 {
-	mlx_image_to_window(game->mlx, game->background_i,
+	int i = 0;
+	int j = 0;
+	
+	i = mlx_image_to_window(game->mlx, game->background_i,
 		W_WIDTH * x, W_HEIGHT * y);
-	mlx_image_to_window(game->mlx, img, W_WIDTH * x, W_HEIGHT * y);
+	j = mlx_image_to_window(game->mlx, img, W_WIDTH * x, W_HEIGHT * y);
+
+	printf("%i - %i\n", i, j);
 }
 
 void	window_tiling(t_data *game)
@@ -73,11 +78,20 @@ void ft_loop(void *param)
 	t_data *game;
 
 	game = param;
-	game->frame_counter++;
-	if (game->frame_counter > game->frame_duration)
+	
+	game->time += game->mlx->delta_time;
+	if (game->time >= 1.0/3.0)
 	{
+		animation(game);
+		game->anim_counter++;
+		if (game->anim_counter > 2)
+			game->anim_counter = 0;
 		enemy_movement(game);
-		game->frame_counter = 0;	
+		mini_window_tiling(game);
+		if (game->counter)
+			mlx_delete_image(game->mlx, game->counter);
+		game->counter = mlx_put_string(game->mlx, ft_itoa(game->moves), 0, 0);
+		game->time = 0;
 	}
 }
 
@@ -86,11 +100,10 @@ int	window_control(t_data *game)
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height, "so_long", false);
 	if (!game->mlx)
 		return (error_message(game, 'W'));
-	load_sprites(game);
+	load_textures(game);
+	load_images_0(game);
 	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
-	game->frame_counter = 0;
-	game->frame_duration = 10;
 	mlx_loop_hook(game->mlx, &ft_loop, game);
 	mlx_loop(game->mlx);
 	return (0);
