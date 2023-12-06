@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:07:22 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:25:16 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ static int	is_map_playable(t_data *game)
 	}
 	if (game->c_count < 1)
 		return (1);
-	if (game->p_count != 1)
-		return (1);
-	if (game->e_count != 1)
+	if (game->p_count != 1 || game->e_count != 1)
 		return (1);
 	return (0);
 }
