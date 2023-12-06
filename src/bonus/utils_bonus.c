@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 15:11:50 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:20:29 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,7 @@ void	obtain_player_exit_pos(t_data *game)
 	}
 }
 
-void	ft_annihilation(t_data *game)
-{
-	int	i;
-
-	i = -1;
-	while (++i < game->map_height)
-		free(game->map[i]);
-	free(game->map);
-	if (game->wall.i_0)
-	{
-		ft_annihilation_textures(game);
-		mlx_terminate(game->mlx);
-	}
-}
-
-void ft_annihilation_textures(t_data *game)
+static void	ft_annihilation_textures(t_data *game)
 {
 	mlx_delete_texture(game->background.t_0);
 	mlx_delete_texture(game->wall.t_0);
@@ -84,6 +69,21 @@ void ft_annihilation_textures(t_data *game)
 	mlx_delete_texture(game->collectable.t_2);
 	mlx_delete_texture(game->exit.t_2);
 	mlx_delete_texture(game->enemy.t_2);
+}
+
+void	ft_annihilation(t_data *game)
+{
+	int	i;
+
+	i = -1;
+	while (++i < game->map_height)
+		free(game->map[i]);
+	free(game->map);
+	if (game->wall.i_0)
+	{
+		ft_annihilation_textures(game);
+		mlx_terminate(game->mlx);
+	}
 }
 
 int	check_for_letters(t_data *game)

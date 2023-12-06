@@ -6,24 +6,13 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:37:17 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 13:21:01 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:21:36 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_bonus.h>
 
-void enemy_movement(t_data *game)
-{
-	if (game->v_enemy_flag == 0)
-		move_vertical_enemy(game);
-	if (game->v_enemy_flag == 1)
-		r_move_vertical_enemy(game);	
-	if (game->h_enemy_flag == 0)
-		move_horizontal_enemy(game);
-	if (game->h_enemy_flag == 1)
-		r_move_horizontal_enemy(game);
-}
-void move_vertical_enemy(t_data *game)
+static void	move_vertical_enemy(t_data *game)
 {
 	game->y = 0;
 	while (game->map[game->y])
@@ -52,7 +41,7 @@ void move_vertical_enemy(t_data *game)
 	}
 }
 
-void r_move_vertical_enemy(t_data *game)
+static void	r_move_vertical_enemy(t_data *game)
 {
 	game->y = 0;
 	while (game->map[game->y])
@@ -81,7 +70,7 @@ void r_move_vertical_enemy(t_data *game)
 	}
 }
 
-void move_horizontal_enemy(t_data *game)
+static void	move_horizontal_enemy(t_data *game)
 {
 	game->y = 0;
 	while (game->map[game->y])
@@ -110,7 +99,7 @@ void move_horizontal_enemy(t_data *game)
 	}
 }
 
-void r_move_horizontal_enemy(t_data *game)
+static void	r_move_horizontal_enemy(t_data *game)
 {
 	game->y = 0;
 	while (game->map[game->y])
@@ -137,4 +126,16 @@ void r_move_horizontal_enemy(t_data *game)
 		}
 		game->y++;
 	}
+}
+
+void	enemy_movement(t_data *game)
+{
+	if (game->v_enemy_flag == 0)
+		move_vertical_enemy(game);
+	if (game->v_enemy_flag == 1)
+		r_move_vertical_enemy(game);
+	if (game->h_enemy_flag == 0)
+		move_horizontal_enemy(game);
+	if (game->h_enemy_flag == 1)
+		r_move_horizontal_enemy(game);
 }

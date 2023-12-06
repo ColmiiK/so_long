@@ -77,7 +77,7 @@ re:			fclean all
 			@echo "$(MAGENTA)so_long recompiled!$(DEF_COLOR)"
 
 norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT)/src
+			@norminette $(SRC) $(B_SRC) $(INCLUDE) $(LIBFT)/src
 
 bonus: $(B_OBJ)
 			@make -C $(LIBFT)
@@ -85,7 +85,13 @@ bonus: $(B_OBJ)
 			@$(CC) $(CFLAGS) $(B_OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(MAGENTA)so_long bonus compiled!$(DEF_COLOR)"
 
-map:
-			@./so_long maps/map_0.ber
+1:
+			@./so_long maps/1.ber
+1b:
+			@./so_long maps/1_bonus.ber
+2:
+			@./so_long maps/2.ber
+2b:
+			@./so_long maps/2_bonus.ber
 
-.PHONY: all clean fclean re norm map bonus
+.PHONY: all clean fclean re norm 1 1b 2 2b

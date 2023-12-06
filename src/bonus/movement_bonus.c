@@ -6,13 +6,13 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:08:23 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 13:20:04 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:17:50 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_bonus.h>
 
-int	event_checker(t_data *game, int y, int x)
+static int	event_checker(t_data *game, int y, int x)
 {
 	if (game->map[y][x] == '1')
 		return (1);
@@ -24,7 +24,8 @@ int	event_checker(t_data *game, int y, int x)
 		mlx_close_window(game->mlx);
 	if (game->map[y][x] == 'E' && game->c_count == 0)
 	{
-		ft_printf("Congratulations! You finished the game in %i moves!\n", game->moves + 1);
+		ft_printf("Congratulations! You finished the game in %i moves!\n",
+			game->moves + 1);
 		mlx_close_window(game->mlx);
 	}
 	if (game->map[y][x] == 'E' && game->c_count != 0)
@@ -32,7 +33,7 @@ int	event_checker(t_data *game, int y, int x)
 	return (0);
 }
 
-void	update_map(t_data *game, int next_y, int next_x)
+static void	update_map(t_data *game, int next_y, int next_x)
 {
 	game->map[game->y][game->x] = '0';
 	game->map[next_y][next_x] = 'P';
