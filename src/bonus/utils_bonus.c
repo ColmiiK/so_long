@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:04:21 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/05 12:14:32 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:11:50 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,31 @@ void	ft_annihilation(t_data *game)
 	while (++i < game->map_height)
 		free(game->map[i]);
 	free(game->map);
-	if (game->wall_i)
+	if (game->wall.i_0)
 	{
-		mlx_delete_image(game->mlx, game->wall_i);
-		mlx_delete_image(game->mlx, game->background_i);
-		mlx_delete_image(game->mlx, game->player_i);
-		mlx_delete_image(game->mlx, game->collectable_i);
-		mlx_delete_image(game->mlx, game->exit_i);
-		mlx_delete_image(game->mlx, game->enemy_i);
-		mlx_delete_image(game->mlx, game->counter); /* <- NOT CORRECTLY FREEING MEMORY */
-		mlx_delete_texture(game->background_t);
-		mlx_delete_texture(game->wall_t_0);
-		mlx_delete_texture(game->player_t_0);
-		mlx_delete_texture(game->collectable_t_0);
-		mlx_delete_texture(game->exit_t_0);
-		mlx_delete_texture(game->enemy_t_0);
+		ft_annihilation_textures(game);
 		mlx_terminate(game->mlx);
 	}
+}
+
+void ft_annihilation_textures(t_data *game)
+{
+	mlx_delete_texture(game->background.t_0);
+	mlx_delete_texture(game->wall.t_0);
+	mlx_delete_texture(game->player.t_0);
+	mlx_delete_texture(game->collectable.t_0);
+	mlx_delete_texture(game->exit.t_0);
+	mlx_delete_texture(game->enemy.t_0);
+	mlx_delete_texture(game->wall.t_1);
+	mlx_delete_texture(game->player.t_1);
+	mlx_delete_texture(game->collectable.t_1);
+	mlx_delete_texture(game->exit.t_1);
+	mlx_delete_texture(game->enemy.t_1);
+	mlx_delete_texture(game->wall.t_2);
+	mlx_delete_texture(game->player.t_2);
+	mlx_delete_texture(game->collectable.t_2);
+	mlx_delete_texture(game->exit.t_2);
+	mlx_delete_texture(game->enemy.t_2);
 }
 
 int	check_for_letters(t_data *game)

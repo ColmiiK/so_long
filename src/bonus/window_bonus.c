@@ -6,22 +6,21 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:04:32 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/05 13:09:40 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:33:06 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_bonus.h>
 
-void	apply_image(t_data *game, void *img, int x, int y)
+void	apply_image(t_data *game, t_image *img, int x, int y)
 {
-	int i = 0;
-	int j = 0;
-	
-	i = mlx_image_to_window(game->mlx, game->background_i,
-		W_WIDTH * x, W_HEIGHT * y);
-	j = mlx_image_to_window(game->mlx, img, W_WIDTH * x, W_HEIGHT * y);
-
-	printf("%i - %i\n", i, j);
+	mlx_image_to_window(game->mlx, game->background.i_0, W_WIDTH * x, W_HEIGHT * y);
+	mlx_image_to_window(game->mlx, img->i_0, W_WIDTH * x, W_HEIGHT * y);
+	img->i_0->enabled = 1;
+	mlx_image_to_window(game->mlx, img->i_1, W_WIDTH * x, W_HEIGHT * y);
+	img->i_1->enabled = 0;
+	mlx_image_to_window(game->mlx, img->i_2, W_WIDTH * x, W_HEIGHT * y);
+	img->i_2->enabled = 0;
 }
 
 void	window_tiling(t_data *game)
@@ -36,19 +35,19 @@ void	window_tiling(t_data *game)
 		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == '1')
-				apply_image(game, game->wall_i, j, i);
+				apply_image(game, &game->wall, j, i);
 			if (game->map[i][j] == '0')
-				apply_image(game, game->background_i, j, i);
+				apply_image(game, &game->background, j, i);
 			if (game->map[i][j] == 'P')
-				apply_image(game, game->player_i, j, i);
+				apply_image(game, &game->player, j, i);
 			if (game->map[i][j] == 'E')
-				apply_image(game, game->exit_i, j, i);
+				apply_image(game, &game->exit, j, i);
 			if (game->map[i][j] == 'C')
-				apply_image(game, game->collectable_i, j, i);
+				apply_image(game, &game->collectable, j, i);
 			if (game->map[i][j] == 'V')
-				apply_image(game, game->enemy_i, j, i);
+				apply_image(game, &game->enemy, j, i);
 			if (game->map[i][j] == 'H')
-				apply_image(game, game->enemy_i, j, i);
+				apply_image(game, &game->enemy, j, i);
 		}
 	}
 }
@@ -76,23 +75,24 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 void ft_loop(void *param)
 {
 	t_data *game;
+	char *temp;
 
 	game = param;
-	
-	game->time += game->mlx->delta_time;
-	if (game->time >= 1.0/3.0)
+	static int i;
+	if (i % 9 == 0)
 	{
 		animation(game);
 		game->anim_counter++;
 		if (game->anim_counter > 2)
 			game->anim_counter = 0;
 		enemy_movement(game);
-		mini_window_tiling(game);
+		temp = ft_itoa(game->moves);
 		if (game->counter)
 			mlx_delete_image(game->mlx, game->counter);
-		game->counter = mlx_put_string(game->mlx, ft_itoa(game->moves), 0, 0);
-		game->time = 0;
+		game->counter = mlx_put_string(game->mlx, temp, 0, 0);
+		free(temp);
 	}
+	i++;
 }
 
 int	window_control(t_data *game)
@@ -100,8 +100,7 @@ int	window_control(t_data *game)
 	game->mlx = mlx_init(W_WIDTH * game->map_width, W_HEIGHT * game->map_height, "so_long", false);
 	if (!game->mlx)
 		return (error_message(game, 'W'));
-	load_textures(game);
-	load_images_0(game);
+	load_textures_and_images(game);
 	window_tiling(game);
 	mlx_key_hook(game->mlx, &ft_keyhook, game);
 	mlx_loop_hook(game->mlx, &ft_loop, game);

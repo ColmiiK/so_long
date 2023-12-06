@@ -6,11 +6,16 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/05 13:03:55 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:47:51 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_bonus.h>
+
+void leaks(void)
+{
+	system("leaks -q so_long");
+}
 
 void setup_struct(t_data *game)
 {
@@ -18,14 +23,13 @@ void setup_struct(t_data *game)
 	game->moves = 0;
 	game->v_enemy_flag = 0;
 	game->h_enemy_flag = 0;
-	game->anim_counter = 0;
-	game->time = 0.0;
 }
 
 int	main(int ac, char **av)
 {
 	t_data	game;
 
+	atexit(leaks);
 	if (ac == 1)
 		return (ft_printf("Error\nNo map was provided.\n"));
 	if (ac > 2)

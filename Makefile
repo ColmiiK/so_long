@@ -28,7 +28,7 @@ WHITE = \033[0;97m
 #Sources
 	
 SRC_FILES = main map error_check utils window movement path sprites
-B_SRC_FILES = main_bonus map_bonus error_check_bonus utils_bonus window_bonus movement_bonus path_bonus sprites_bonus enemies_bonus
+B_SRC_FILES = main_bonus map_bonus error_check_bonus utils_bonus window_bonus movement_bonus path_bonus sprites_bonus enemies_bonus animation_bonus
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 B_SRC = $(addprefix $(B_SRC_DIR), $(addsuffix .c, $(B_SRC_FILES)))

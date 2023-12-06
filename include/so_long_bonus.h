@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/05 12:57:16 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:20:15 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # include <math.h>
 # include <stdbool.h>
 
+typedef struct s_image
+{
+	void *t_0;
+	void *t_1;
+	void *t_2;
+	mlx_image_t *i_0;
+	mlx_image_t *i_1;
+	mlx_image_t *i_2;
+}			t_image;
+
 typedef struct s_data
 {
 	mlx_t	*mlx;
@@ -33,7 +43,6 @@ typedef struct s_data
 	int		v_e_count;
 	int		h_e_count;
 	int		moves;
-	void	*counter;
 	int		player_x_pos;
 	int		player_y_pos;
 	int		exit_x_pos;
@@ -42,34 +51,19 @@ typedef struct s_data
 	int		y;
 	bool	v_enemy_flag;
 	bool	h_enemy_flag;
-	double	time;
 
 	char	**map;
-	void	*wall_i;
-	void	*background_i;
-	void	*player_i;
-	void	*exit_i;
-	void	*collectable_i;
-	void	*enemy_i;
-	void	*background_t;
-	void	*wall_t_0;
-	void	*player_t_0;
-	void	*exit_t_0;
-	void	*collectable_t_0;
-	void	*enemy_t_0;
-	void	*wall_t_1;
-	void	*player_t_1;
-	void	*exit_t_1;
-	void	*collectable_t_1;
-	void	*enemy_t_1;
-	void	*wall_t_2;
-	void	*player_t_2;
-	void	*exit_t_2;
-	void	*collectable_t_2;
-	void	*enemy_t_2;
+	mlx_image_t* counter;
+	t_image	wall;
+	t_image	background;
+	t_image	player;
+	t_image	exit;
+	t_image	collectable;
+	t_image	enemy;
 	int		anim_counter;
 	void	*window;
 }			t_data;
+
 
 int			populate_map(t_data *game, char *av);
 int			is_map_correct(t_data *game);
@@ -78,11 +72,12 @@ size_t		get_width(char *str);
 int			window_control(t_data *game);
 void		window_tiling(t_data *game);
 
-void		apply_image(t_data *game, void *img, int x, int y);
+void	apply_image(t_data *game, t_image *img, int x, int y);
 void		move_player(t_data *game, int mod_y, int mod_x);
 void		obtain_player_exit_pos(t_data *game);
 int			is_map_doable(t_data *game);
 void		ft_annihilation(t_data *game);
+void		ft_annihilation_textures(t_data *game);
 int			check_for_letters(t_data *game);
 void		move_vertical_enemy(t_data *game);
 void		move_horizontal_enemy(t_data *game);
@@ -90,11 +85,12 @@ void		r_move_vertical_enemy(t_data *game);
 void		r_move_horizontal_enemy(t_data *game);
 void		enemy_movement(t_data *game);
 void		animation(t_data *game);
-void	load_textures(t_data *game);
-void load_images_0(t_data *game);
-void load_images_1(t_data *game);
-void load_images_2(t_data *game);
-void mini_window_tiling(t_data *game);
-void delete_images(t_data *game);
+void		load_textures(t_data *game);
+void		load_images_0(t_data *game);
+void		load_images_1(t_data *game);
+void		load_images_2(t_data *game);
+void		mini_window_tiling(t_data *game);
+void		delete_images(t_data *game);
+void 		load_textures_and_images(t_data *game);
 
 #endif

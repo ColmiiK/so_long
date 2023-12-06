@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:37:17 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 16:59:55 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:21:01 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void move_vertical_enemy(t_data *game)
 				{
 					game->map[game->y][game->x] = '0';
 					game->map[game->y + 1][game->x] = 'V';
-					apply_image(game, game->enemy_i, game->x, game->y + 1);
-					apply_image(game, game->background_i, game->x, game->y);
+					apply_image(game, &game->enemy, game->x, game->y + 1);
+					apply_image(game, &game->background, game->x, game->y);
 					return ;
 				}
 			}
@@ -70,8 +70,8 @@ void r_move_vertical_enemy(t_data *game)
 				{
 					game->map[game->y][game->x] = '0';
 					game->map[game->y - 1][game->x] = 'V';
-					apply_image(game, game->enemy_i, game->x, game->y - 1);
-					apply_image(game, game->background_i, game->x, game->y);
+					apply_image(game, &game->enemy, game->x, game->y - 1);
+					apply_image(game, &game->background, game->x, game->y);
 					return ;
 				}
 			}
@@ -99,8 +99,8 @@ void move_horizontal_enemy(t_data *game)
 				{
 					game->map[game->y][game->x] = '0';
 					game->map[game->y][game->x + 1] = 'H';
-					apply_image(game, game->enemy_i, game->x + 1, game->y);
-					apply_image(game, game->background_i, game->x, game->y);
+					apply_image(game, &game->enemy, game->x + 1, game->y);
+					apply_image(game, &game->background, game->x, game->y);
 					return ;
 				}
 			}
@@ -128,8 +128,8 @@ void r_move_horizontal_enemy(t_data *game)
 				{
 					game->map[game->y][game->x] = '0';
 					game->map[game->y][game->x - 1] = 'H';
-					apply_image(game, game->enemy_i, game->x - 1, game->y);
-					apply_image(game, game->background_i, game->x, game->y);
+					apply_image(game, &game->enemy, game->x - 1, game->y);
+					apply_image(game, &game->background, game->x, game->y);
 					return ;
 				}
 			}
