@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:27:09 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 16:25:16 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:00:23 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ static int	is_map_playable(t_data *game)
 			game->p_count++;
 		if (ft_strchr(game->map[i], 'E'))
 			game->e_count++;
-		if (ft_strchr(game->map[i], 'C'))
-			game->c_count++;
 	}
+	coin_count(game);
 	if (game->c_count < 1)
 		return (1);
 	if (game->p_count != 1 || game->e_count != 1)

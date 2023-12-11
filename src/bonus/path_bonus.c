@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:12:46 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/04 14:08:40 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:23:37 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,21 @@ int	is_map_doable(t_data *game)
 	}
 	free_map(valid);
 	return (0);
+}
+
+void	coin_count(t_data *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (game->map[++i])
+	{
+		j = -1;
+		while (game->map[i][++j])
+		{
+			if (game->map[i][j] == 'C')
+				game->c_count++;
+		}
+	}
 }
