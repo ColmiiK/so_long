@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:42:49 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 16:20:51 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:01:11 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void			load_images_2(t_data *game);
 void			mini_window_tiling(t_data *game);
 void			delete_images(t_data *game);
 void			load_textures_and_images(t_data *game);
+void			coin_count(t_data *game);
 
 #endif

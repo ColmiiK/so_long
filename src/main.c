@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:34:57 by alvega-g          #+#    #+#             */
-/*   Updated: 2023/12/06 16:25:01 by alvega-g         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:25:49 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	setup_struct(t_data *game)
 {
 	ft_memset(game, 0, sizeof(t_data));
 	game->moves = 0;
+	game->c_count = 0;
 }
 
 int	main(int ac, char **av)

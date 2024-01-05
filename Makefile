@@ -9,7 +9,7 @@ SRC_DIR = src/
 B_SRC_DIR = src/bonus/
 OBJ_DIR = obj/
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -f
 AR = ar rcs
 
@@ -85,13 +85,4 @@ bonus: $(B_OBJ)
 			@$(CC) $(CFLAGS) $(B_OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(MAGENTA)so_long bonus compiled!$(DEF_COLOR)"
 
-1:
-			@./so_long maps/1.ber
-1b:
-			@./so_long maps/1_bonus.ber
-2:
-			@./so_long maps/2.ber
-2b:
-			@./so_long maps/2_bonus.ber
-
-.PHONY: all clean fclean re norm 1 1b 2 2b
+.PHONY: all clean fclean re norm
