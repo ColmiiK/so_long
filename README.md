@@ -8,7 +8,6 @@
         <img alt='42 (oscuro)' src='https://img.shields.io/badge/Málaga-black?style=flat&logo=42&logoColor=white'/>
     </a>
     <img src="https://img.shields.io/badge/score- 125%20%2F%20100-success?color=%2312bab9&style=flat" />
-    <img src="https://wakatime.com/badge/user/018cd069-7ab6-4658-9d62-78d9b3970dd2/project/018cd069-ed6a-4aad-961f-bb95404cfd4c.svg" alt="Tiempo" />
 </div>
 
 ---
